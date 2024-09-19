@@ -1,5 +1,16 @@
 import os
 
+meias = []
+
+def exibir_subtitulo(texto):
+    os.system('cls')
+    print(texto)
+    print('')
+
+def retorna_menu_principal():
+    input('\n Digite uma tecla para voltar ao menu principal')
+    main()
+
 def mostra_titulo():
 
     print('𝓜𝓮𝓲𝓪𝓼 𝓗𝓸𝓪𝓱𝓲\n')
@@ -11,24 +22,51 @@ def mostra_escolhas():
     print ('4. Sair da aplicação')
 
 def escolhe_opcao():
-    opcao_escolhida = int(input('Escolha uma opção:'))
-    print('Você escolheu a opção: ', opcao_escolhida)
+    try:
+        opcao_escolhida = int(input('Escolha uma opção:'))
+        print('Você escolheu a opção: ', opcao_escolhida)
 
-    def finalizar_programa():
-        os.system('cls')
-        print('Finalizando programa')
+        if opcao_escolhida == 1:
+            cadastrar_meias()
+        elif opcao_escolhida == 2:
+            mostrar_meias()
+        elif opcao_escolhida == 3:
+            print('Ativar/Desativar meias')
+        elif opcao_escolhida == 4:
+            finalizar_programa()   
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()   
 
-    if opcao_escolhida == 1:
-        print('Cadastrar meias')
-    elif opcao_escolhida == 2:
-        print('Listar meias')
-    elif opcao_escolhida == 3:
-        print('Ativar/Desativar meias')
-    else:
-        finalizar_programa()
+def cadastrar_meias():
+    exibir_subtitulo('Cadastrar Meias')
+
+    nome_meia = input('Digite o nome da meia: ')
+    meias.append(nome_meia)
+    print(f'{nome_meia} foi adicionado aos Itens')
+    retorna_menu_principal()
+
+def mostrar_meias():
+    exibir_subtitulo('Listar Meias')
+
+    for meia in meias:
+        print(f' - {meia}')
+
+    retorna_menu_principal()
+
+def finalizar_programa():
+    os.system('cls')
+    print('Finalizando programa')
+
+def opcao_invalida():
+    print('Esse caracter não é permitido')
+    retorna_menu_principal()
 
 def main():
     mostra_titulo()
     mostra_escolhas()
     escolhe_opcao()
-    
+
+if __name__ == '__main__':
+    main()
