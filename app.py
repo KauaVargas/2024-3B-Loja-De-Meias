@@ -1,6 +1,10 @@
 import os
 
-meias = []
+meias = [{'nome':'12345', 'grupo de produtos':'masculino', 'estoque':True},
+         {'nome':'23456', 'grupo de produtos':'feminino','estoque':True },
+         {'nome':'34567', 'grupo de produtos':'infantil','estoque':True},
+         {'nome':'45678', 'grupo de produtos':'cano alto','estoque':True}]
+
 
 def exibir_subtitulo(texto):
     os.system('cls')
@@ -51,7 +55,10 @@ def mostrar_meias():
     exibir_subtitulo('Listar Meias')
 
     for meia in meias:
-        print(f' - {meia}')
+        nome_meia = meia['nome']
+        categoria = meia['grupo de produtos']
+        ativo = meia['estoque']
+        print(f' - {nome_meia} | {categoria} | {ativo}')
 
     retorna_menu_principal()
 
